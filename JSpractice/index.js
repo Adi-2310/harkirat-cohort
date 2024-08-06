@@ -1,7 +1,14 @@
-const arr = [1,2,3,4,5];
+const express= require("express");
+const app = express();
 
-const ans = arr.filter(function transform(i){
-    if(i%2==0) return true;
-    else return false;
-});
-console.log(ans);
+app.use(express.json());
+
+app.post("/health-checkup",function(req,res){
+
+    const kidneys = req.body.kidneys;
+    const kidneyLength = kidneys.length;
+
+    res.send("you have " + kidneyLength + "kidneys");
+})
+
+app.listen(3000);
