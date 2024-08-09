@@ -1,0 +1,42 @@
+<html>
+
+<script>
+
+    function populateDiv(){
+
+        const a = document.getElementById("firstnumber").value;
+        const b = document.getElementById("secondnumber").value;
+
+        const element = document.getElementById("finalSum");
+        console.log(element);
+        // element.innerHTML = parseInt(a)+ parseInt(b);
+        // parseInt -> global function which converts a string to a number
+
+        //fetch
+        fetch("https://sum-server.100xdevs.com/sum?a=" +a+"&b=" +b)
+            .then(function(response){
+                console.log(response);
+
+                response.text()
+                    .then(function(ans){
+                        console.log(ans);
+                       document.getElementById("finalSum").innerHTML = ans; 
+                    })
+            }) 
+    }
+
+</script>
+
+<body>
+
+    <input id="firstnumber" type="text" placeholder="First number"></input>
+    <br></br>
+    <input id="secondnumber" type="text" placeholder="Second number"></input>
+    <br></br>
+    <!-- <button onclick="populateDiv()">Calculate sum</button>
+    <br></br> -->
+    <div id="finalSum"></div>
+
+</body>
+
+</html>

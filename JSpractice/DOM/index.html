@@ -1,29 +1,28 @@
-<html>
-
+<body>
 <script>
 
-    function populateDiv(){
+    function addTodo(){
 
-        const a = document.getElementById("firstnumber").value;
-        const b = document.getElementById("secondnumber").value;
+        const title = document.getElementById("title").value;
+        const description = document.getElementById("description").value;
 
-        const element = document.getElementById("finalSum");
-        console.log(element);
-        element.innerHTML = parseInt(a)+ parseInt(b);
+        document.getElementById("container").innerHTML = `${title} ${description}`;
     }
-
 </script>
 
-<body>
+<html>
 
-    <input id="firstnumber" type="text" placeholder="First number"></input>
-    <br></br>
-    <input id="secondnumber" type="text" placeholder="Second number"></input>
-    <br></br>
-    <button onclick="populateDiv()">Calculate sum</button>
-    <br></br>
-    <div id="finalSum"></div>
+    <div>
+        <input id="title" type="text" placeholder="title"></input>
+        <br></br>
+        <input id="description" type="text" placeholder="description"></input>
+        <br></br>
+        
+        <button onclick="addTodo()">Add Todo</button>
+    </div>
 
-</body>
+    <div id="container"></div>
+
 
 </html>
+</body>
