@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react'
 import React from 'react';
 import './App.css'
 
-export function App() {
+function App() {
 
   const[todos,setTodos] = useState([{
     
@@ -32,7 +32,7 @@ export function App() {
 
     <button onClick={addTodo}>Add Todo</button>
 
-    {todos.map(todo=> <Todo title={todo.title} description={todo.description}/>)}
+    {todos.map(todo=> <Todo key={todo.id} title={todo.title} description={todo.description}/>)}
 
   </div>
 }
@@ -44,3 +44,4 @@ function Todo({title,description}){
   </div>
 }
 
+export default App
