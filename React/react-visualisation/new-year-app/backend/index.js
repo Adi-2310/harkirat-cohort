@@ -1,12 +1,15 @@
 // write basic express boiler plate code
 //with express.json() middleware
-import express from 'express'
-import { createTodo, updateTodo } from './types';
-import { todo } from './db';
+// import express from 'express'
+const { createTodo, updateTodo } = require('./types');
+const { todo } = require('./db'); 
+const express = require("express");
 const app = express();
 // import {z} from Zod;
+const cors = require("cors");
 
 app.use(express.json());
+app.use(cors());
 
 //body {title:string, description:string}
 
