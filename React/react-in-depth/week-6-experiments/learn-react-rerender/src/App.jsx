@@ -1,46 +1,36 @@
 import { Fragment, useState } from 'react'
-import React from 'react';
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
 import './App.css'
 
-export function App() {
-
-  const[todos,setTodos] = useState([{
-    
-    id:1,
-    title:"go to gym",
-    description:"go to gym today"
-  },{
-    id:2,
-    title:"go to work",
-    description:"go to work today"
-  },{
-    id:3,
-    title:"go to school",
-    description:"go to school today"
-  }]);
-
-  function addTodo(){
-    setTodos([...todos,{
-      id:4,
-      title:"go to market",
-      description:"go to market today"
-
-    }])
-  }
+function App() {
   
+  return (
+
+      <Fragment>
+        <HeaderwithButton/>
+        <Header title="aditya2"></Header>
+      </Fragment>
+    
+  )
+}
+
+function HeaderwithButton(){
+  const [title, setTitle] = useState("my name is aditya")
+
+  function updateTitle(){
+    setTitle("My name is "+ Math.random());
+  }
+
+  return <>
+    <button onClick={updateTitle}>Update the title</button>
+    <Header title={title}></Header>
+  </>
+}
+function Header({title}){
   return <div>
-
-    <button onClick={addTodo}>Add Todo</button>
-
-    {todos.map(todo=> <Todo title={todo.title} description={todo.description}/>)}
-
+    {title}
   </div>
 }
 
-function Todo({title,description}){
-  return <div>
-    <h1>{title}</h1>
-    <h5>{description}</h5>
-  </div>
-}
-
+export default App
