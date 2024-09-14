@@ -1,18 +1,19 @@
-import { useState } from 'react'
 import {BrowserRouter, Route, Routes, useNavigate} from 'react-router-dom'
-import { Dashboard } from './components/Dashboard'
-import { Landing } from './components/Landing'
+import { lazy, Suspense } from 'react';
+const Dashboard = lazy(()=>import('./components/Dashboard')); // send Dashboard ka package only when you go on Dashboard endpoint, sab ek saath nahi bhejega
+const Landing = lazy(()=>import('./components/Landing'));
 
+// While lazy loading you have to use Suspense 
 
 function App() {
 
   return (
     <div>
     <BrowserRouter>
-    { <Appbar/>  /*whatver uses the useNavigate hook needs to be inside BrowserRouter */}
+    <Appbar/>  {/*//whatver uses the useNavigate hook needs to be inside BrowserRouter  */}
     <Routes>
-      <Route path = "/dashboard" element={<Dashboard/>}/>
-      <Route path = "/" element={<Landing/>}/>
+      <Route path = "/dashboard" element={<Suspense fallback={"loading..."}><Dashboard/></Suspense>}/>
+      <Route path = "/" element={<Suspense fallback={"loading..."}><Landing/></Suspense>}/>
     </Routes>
 
     </BrowserRouter>
